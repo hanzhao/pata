@@ -10,8 +10,7 @@ public:
 	string id;
 	int local, score;
 	Testee() {}
-	Testee(string i,int l,int s)
-	{ id = i; local = l; score = s; }
+	Testee(string i,int l,int s) : id(i), local(l), score(s) {}
 };
 bool operator <(Testee A, Testee B)
 {
@@ -23,7 +22,7 @@ Testee local[105][305], all[30005];
 int lsum[105];
 int main()
 {
-	cin.sync_with_stdio(0);
+	//cin.sync_with_stdio(0);
 	string stuid,lastid = "0";
 	int i,j,n,m,score,tot = 0,lasts = -1000,lastrk = -1,t;
 	cin >> n;
@@ -48,14 +47,14 @@ int main()
 		}
 	}
 	sort(all + 1, all + tot + 1);
-	cout << tot << endl;
+	printf("%d\n", tot);
 	lasts = -1000;
 	for (i = 1;i <= tot;++i)
 	{
 		cout << all[i].id << " ";
-		cout << (t = (all[i].score == lasts ? lastrk : i)) << " ";
-		cout << all[i].local << " ";
-		cout << lrank[all[i].id] << endl;
+		printf("%d ", (t = (all[i].score == lasts ? lastrk : i)));
+		printf("%d ", all[i].local);
+		printf("%d\n", lrank[all[i].id]);
 		lasts = all[i].score; lastrk = t;
 	}
 	return 0;
